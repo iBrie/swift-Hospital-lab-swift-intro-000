@@ -32,16 +32,16 @@ class ProtocolSpec: QuickSpec {
             it("Should require one instance property called vacationDays of type Int which is both settable and gettable. It should also require a function called requestForVacation(_:) which takes in one argument of type Int and returns back a Bool. See the instructions for how this protocol should provide default implementation for this function.") {
                 
                 // fakeJim has 15 vacation days (as per its default value asigned above)
-                let requestFor15Days = fakeJim.requestForVacation(15)
+                let requestFor15Days = fakeJim.requestForVacation(days: 15)
                 expect(requestFor15Days).to(equal(true))
                 
-                let requestFor16Days = fakeJim.requestForVacation(16)
+                let requestFor16Days = fakeJim.requestForVacation(days: 16)
                 expect(requestFor16Days).to(equal(false))
                 
                 // change the amount of vacation days fakeJim has to 0
                 fakeJim.vacationDays = 0
                 
-                let requestFor1Day = fakeJim.requestForVacation(1)
+                let requestFor1Day = fakeJim.requestForVacation(days: 1)
                 expect(requestFor1Day).to(equal(false))
                 
             }
@@ -50,17 +50,17 @@ class ProtocolSpec: QuickSpec {
         describe("Reprimand protocol") {
             it("Should provide default implementation of disciplineStudent(_:) function. See instructions for details.") {
                 
-                let messageForSevere = fakeJim.disciplineStudent(.severe)
-                let messageForLight = fakeJim.disciplineStudent(.light)
-                let messageForMedium = fakeJim.disciplineStudent(.medium)
+                let messageForSevere = fakeJim.disciplineStudent(scale: .severe)
+                let messageForLight = fakeJim.disciplineStudent(scale: .light)
+                let messageForMedium = fakeJim.disciplineStudent(scale: .medium)
                 
                 expect(messageForSevere).to(equal("We are expelling you from the school!"))
                 expect(messageForLight).to(equal("You're to go back to class, don't do it again."))
                 expect(messageForMedium).to(equal("Why would you think that's a good idea?! You're going to detention."))
                 
-                let messageForParentSevere = fakeJim.callParentDeliveringMessage(.severe)
-                let messageForParentLight = fakeJim.callParentDeliveringMessage(.light)
-                let messageForParentMedium = fakeJim.callParentDeliveringMessage(.medium)
+                let messageForParentSevere = fakeJim.callParentDeliveringMessage(scale: .severe)
+                let messageForParentLight = fakeJim.callParentDeliveringMessage(scale: .light)
+                let messageForParentMedium = fakeJim.callParentDeliveringMessage(scale: .medium)
                 
                 expect(messageForParentSevere).to(equal("Your child has been expelled from the school."))
                 expect(messageForParentLight).to(equal("Your child thought it was funny to put gum in Amy's hair."))

@@ -29,16 +29,16 @@ class SchoolEmployeeSpec: QuickSpec {
             it("Should adopt and conform to the TimeOff protocol") {
                 
                 // testBoardMember has 30 vacation days (as per its default value asigned above)
-                let requestFor15Days = testBoardMember.requestForVacation(15)
+                let requestFor15Days = testBoardMember.requestForVacation(days: 15)
                 expect(requestFor15Days).to(equal(true))
                 
-                let requestFor31Days = testBoardMember.requestForVacation(31)
+                let requestFor31Days = testBoardMember.requestForVacation(days: 31)
                 expect(requestFor31Days).to(equal(false))
                 
                 // change the amount of vacation days fakeBoardMember has to 0
                 testBoardMember.vacationDays = 0
                 
-                let requestFor1Day = testBoardMember.requestForVacation(1)
+                let requestFor1Day = testBoardMember.requestForVacation(days: 1)
                 expect(requestFor1Day).to(equal(false))
                 
             }
@@ -58,16 +58,16 @@ class SchoolEmployeeSpec: QuickSpec {
             it("Should adopt the TimeOff protocol") {
                 
                 // testPrincipal has 15 vacation days (as per its default value asigned above)
-                let requestFor15Days = testPrincpial.requestForVacation(15)
+                let requestFor15Days = testPrincpial.requestForVacation(days: 15)
                 expect(requestFor15Days).to(equal(true))
                 
-                let requestFor21Days = testPrincpial.requestForVacation(21)
+                let requestFor21Days = testPrincpial.requestForVacation(days: 21)
                 expect(requestFor21Days).to(equal(false))
                 
                 // change the amount of vacation days fakePrincipal has to 0
                 testPrincpial.vacationDays = 0
                 
-                let requestFor1Day = testPrincpial.requestForVacation(1)
+                let requestFor1Day = testPrincpial.requestForVacation(days: 1)
                 expect(requestFor1Day).to(equal(false))
                 
             }
@@ -76,7 +76,7 @@ class SchoolEmployeeSpec: QuickSpec {
         describe("Principal - Reprimand") {
             it("Should implement the Reprimand protocol correctly.") {
                 
-                let messageForSevere = testPrincpial.disciplineStudent(.severe)
+                let messageForSevere = testPrincpial.disciplineStudent(scale: .severe)
                 
                 expect(messageForSevere).to(equal("We are expelling you from the school!"))
             }
@@ -96,16 +96,16 @@ class SchoolEmployeeSpec: QuickSpec {
             it("Should adopt the TimeOff protocol") {
                 
                 // testTeacher has 15 vacation days (as per its default value asigned above)
-                let requestFor15Days = testTeacher.requestForVacation(15)
+                let requestFor15Days = testTeacher.requestForVacation(days: 15)
                 expect(requestFor15Days).to(equal(true))
                 
-                let requestFor16Days = testTeacher.requestForVacation(16)
+                let requestFor16Days = testTeacher.requestForVacation(days: 16)
                 expect(requestFor16Days).to(equal(false))
                 
                 // change the amount of vacation days testTeacher has to 0
                 testTeacher.vacationDays = 0
                 
-                let requestFor1Day = testTeacher.requestForVacation(1)
+                let requestFor1Day = testTeacher.requestForVacation(days: 1)
                 expect(requestFor1Day).to(equal(false))
                 
             }
